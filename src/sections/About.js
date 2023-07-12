@@ -1,10 +1,12 @@
 import React from "react";
 import styled from "styled-components";
+import img1 from "../assets/Images/1.webp";
+import img2 from "../assets/Images/2.webp";
+import img3 from "../assets/Images/3.webp";
 
 const Section = styled.section`
   position: relative;
   min-height: 100vh;
-  overflow: hidden;
   display: flex;
   width: 80vw;
   margin: 0 auto;
@@ -32,6 +34,26 @@ const Left = styled.div`
 
 const Right = styled.div`
   width: 50%;
+  position: relative;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  .small-img-1 {
+    width: 40%;
+    position: absolute;
+    right: 95%;
+    bottom: 10%;
+  }
+
+  .small-img-2 {
+    width: 40%;
+    position: absolute;
+    left: 80%;
+    bottom: 30%;
+  }
 `;
 
 const About = () => {
@@ -60,7 +82,23 @@ const About = () => {
         create amazing experiences for all people. We are always looking to make
         something that is easy for everyone.
       </Left>
-      <Right>Images</Right>
+      <Right>
+        <img src={img1} alt="About us" />
+        <img
+          data-scroll
+          data-scroll-speed="5"
+          src={img2}
+          alt="About us"
+          className="small-img-1"
+        />
+        <img
+          data-scroll
+          data-scroll-speed="-2"
+          src={img3}
+          alt="About us"
+          className="small-img-2"
+        />
+      </Right>
     </Section>
   );
 };
