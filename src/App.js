@@ -12,9 +12,22 @@ import ScrollTriggerProxy from "./components/ScrollTriggerProxy";
 import Banner from "./sections/Banner";
 import NewArrival from "./sections/NewArrival";
 import Footer from "./sections/Footer";
+import Loader from "./components/Loader";
+import { useState } from "react";
+import { useEffect } from "react";
+
 
 function App() {
   const containerRef = useRef(null);
+
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+        setLoaded(true);
+      }, 3000);
+  }, [])
+  
 
   return (
     <>
@@ -24,6 +37,12 @@ function App() {
           options={{
             smooth: true,
             // ... all available Locomotive Scroll instance options
+            smartphone: {
+              smooth: true,
+            },
+            tablet: {
+              smooth: true,
+            },
           }}
           watch={
             [
@@ -34,6 +53,7 @@ function App() {
           }
           containerRef={containerRef}
         >
+          {loaded ? null : <Loader />}
           <ScrollTriggerProxy />
           <AnimatePresence>
             <main
